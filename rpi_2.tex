@@ -50,12 +50,12 @@
 \newcommand{\tabreff}[2]{Tables~\ref{tab:#1} and \ref{tab:#2}}
 \newcommand{\tabrefff}[3]{Tables~\ref{tab:#1}, \ref{tab:#2} and \ref{tab:#3}}
 
-\def\year{2024--2025}
-\title{EITA65 Design of Systems for Digital Transformation\\\year}
+\def\year{2025--2026}
+\title{EITA66 Design of Systems for Digital Transformation\\\year}
 %\title{EITA65 Digitalisering -- realisering och systemdesign med användarperspektiv\\\year}
-\author{\huge Sensors with Sense HAT\\Raspberry Pi Project -- Part 2}
+\author{{\huge Sensors with Sense HAT}\\\\Raspberry Pi Project -- Part 2}
 %\\Version \DTMnow}
-\date{}
+%\date{}
 
 \begin{document}
 \newgeometry{left=2.5cm,right=2.5cm,bottom=1.5cm}% for placing course schematic lower on first page
@@ -63,9 +63,9 @@
 \thispagestyle{empty}% to remove page numbering on first page
 
 \begin{itemize}
-\item This project will be done individually, but you will work \textit{together} in groups of 3 or 4.
+\item \includegraphics[width=3mm]{person.png} This project will be done individually, but you will work \textit{together} in groups of 3 or 4.
 \item You will not get detailed step-by-step instructions. Figuring out how to reach the goal is part of the project. (being a collaborative doer)
-\item The results of this project part will be used in the next, so document your work.
+\item The results of this project part will be used in the next so document, and backup, your work.
 \end{itemize}
 
 \vspace{.1cm}
@@ -115,7 +115,7 @@
 
 
 \section{Introduction}
-\noindent In this project part you will get acquainted with Sensors and the Python programming language.
+\noindent In this project part you will get acquainted with sensors and the Python programming language.
 
 \noindent In this part of the project you will
 \begin{itemize}
@@ -125,7 +125,7 @@
 \end{itemize}
 
 \section{What are sensors?}
-Sensors are somethings that gives you information about your surroundings, in the human body our sensors are our senses (duh): vision, sound, touch, smell and taste. Smartphones also have sensors, but theirs are a camera, an accelerometer (detects if you tilt your phone), a gyroscope (orientation details and direction) and a magnetometer (tells you where north is) \cite{foss}. In the Sense HAT that you have there are seven different sensors;
+Sensors are somethings that gives you information about your surroundings. In the human body our sensors are our senses (duh): vision, sound, touch, smell and taste. Smartphones also have sensors, but theirs are a camera, an accelerometer (detects if you tilt your phone), a gyroscope (orientation details and direction) and a magnetometer (tells you where north is) \cite{foss}. In the Sense HAT that you have there are seven different sensors;
 \begin{itemize}
     \item Gyroscope,
     \item Accelerometer,
@@ -151,18 +151,18 @@ In this project you will use Python. Python is a popular programming language us
 \subsection{Using a Python IDE}
 An Integrated Development Environment (IDE) is a graphical user interface (GUI) that aims to make programming easier.
 \begin{itemize}
-    \item[1.] Start Thonny Python IDE (found in the Programming tab in the menu).
+    \item[1.] Start Thonny Python IDE (found in the Programming tab in the menu -- click on the raspberry in the upper left of the screen).
     \item[2.] Write \texttt{print("Hello Pi!")} in the \textless untitled\textgreater  section.
     \item[3.] Save the code you have written to a file named \verb!my_code.py!. For now it is good enough to save all your Python-files in the same directory.
     \item[4.] Run the code! Hopefully you will see \texttt{Hello Pi!} in the shell in the lower part of the window.
 \end{itemize}
-How does that work under the hood? The Thonny Python IDE first takes the Python code you have written and feeds it into a Python program -- a Python interpreter. The interpreter then reads the code and does what the code tells it to do (it interprets the code). And then the output (what is printed) is handed back to the Thonny Python IDE, which displays the result in the lower part of the window.
+How does that work under the hood? The Thonny Python IDE first takes the Python code you have written and feeds it into a special program -- a Python interpreter. The interpreter then reads the code and does what the code tells it to do (it interprets the code). Then, the output (what is printed) is handed back to the Thonny Python IDE, which displays the result in the lower part of the window.
 Simply put, the Thonny Python IDE is a graphical interface to using a Python program.
 
 \subsection{Using the Terminal}
-You can, of course, take the more hard-core approach of running the Python program yourself. It is quite simple, this is how you do it.
+You can, of course, take the more hard-core approach of running the Python program yourself. It is quite simple, this is how you do it:
 \begin{itemize}
-    \item[1.] Start a Terminal (Console window, see top menu).
+    \item[1.] Start a Terminal (click on the Terminal icon in the top left of the screen).
     \item[2.] If necessary, navigate to the folder where you placed \verb!my_code.py!.
     \item[3.] Run the Python program and pass your file name as input as
     \begin{equation}
@@ -171,7 +171,7 @@ You can, of course, take the more hard-core approach of running the Python progr
     \end{equation}
     and press \verb!ENTER!. The output text \texttt{Hello Pi!} should now appear in the Terminal.
 \end{itemize}
-The current version of Raspberry Pi OS (Bookworm) comes with version 3 of Python installed only. Therefore, the \verb!python! command will use that version. You can explicitly state that you want to use Python version 3 when you run your program:
+The current version of Raspberry Pi OS (Trixie) comes with version 3 of Python installed only. Therefore, the \verb!python! command will use that version. You can explicitly state that you want to use Python version 3 when you run your program:
 \begin{equation}
 \verb!python3 my_code.py!
 \end{equation}
@@ -186,26 +186,25 @@ and
 respectively.
 
 \subsection{Printing and looping}
-Recalling that you will not learn the entire Python language, but rather use Python as a convenient tool, what is most useful to you at the moment is printing values and control loops.
+Recalling that you will not learn the entire Python language, but rather use Python as a convenient tool, what is most useful to you at the moment is printing values and control loops.\\
 
-Change your program as follows.
-\begin{itemize}
+\noindent Change your program as follows.
     \item[1.] Open your program file \verb!my_code.py! in Thonny or in a text editor.
     \item[2.] Change the file content to
 \begin{center}
     \verb!for x in range(6):!\\
     \verb!  print(x)        !
 \end{center}    
-    \item[3.] Save and run your code using the Terminal command \eqref{eq:run_code}.
+    \item[3.] Save and run your code using the Terminal command you used earlier \eqref{eq:run_code}.
 \end{itemize}
 What is the output? Try changing the code to
 \begin{center}
     \verb!for x in range(2,6):!\\
     \verb!  print(x)          !
 \end{center}
-What is the output this time?
+What is the output this time?\\
 
-Sometimes infinite loops are useful as well.
+\noindent Sometimes infinite loops are useful as well.
 You can write one as follows.
 \begin{center}
     \verb!x = 0      !\\
@@ -221,7 +220,7 @@ Use the command
 when you want to stop your program from running.
 
 \newpage
-And to get acquainted with formatting output text, modify the code as follows and then run the code, stopping the execution using command \eqref{eq:ctrlc} once more.
+\noindent To get acquainted with formatting output text, modify the code as follows and then run the code, stopping the execution using command \eqref{eq:ctrlc} once more.
 \begin{center}
     \verb!x = 0                                    !\\
     \verb!print(f"The number {x} is large,")       !\\
@@ -232,12 +231,14 @@ And to get acquainted with formatting output text, modify the code as follows an
 You are now ready to move on to the next section :)
 
 \section{The Sense HAT}
-The acronym HAT means \emph{Hardware Attached on Top} and is often used for Raspberry Pi's different extensions. To start using your HAT, follow the {\color{blue}\href{https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat/0}{official instruction}} on how to learn to sense the world around you with it, as well as display messages on the LEDs. The goal is to be able to use the matrix of LEDs, get a reading from each different Sense HAT sensor and to print data from them. As for coding in Python, you should be able to look at and run existing code, and modify the code you have been given. Please don't get stuck on a particular assignment since it is not the main goal for you to create Python code.\\
+The acronym HAT means \emph{Hardware Attached on Top} and is often used for Raspberry Pi's different hardware extensions. One such extension is the Sense HAT. To learn how to use your HAT, follow the {\color{blue}\href{https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat/0}{tutorial (\texttt{https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat/0})}} on\\ how to sense the world around you with it as well as display messages on the LEDs. The goal is to be able to use the matrix of LEDs, get a reading from each different Sense HAT sensor and to print data from them. As for coding in Python, you should be able to look at and run existing code, and modify the code you have been given. Please don't get stuck on a particular assignment since it is not the main goal for you to create Python code.\\
 
-\noindent {\bf Note: }\parbox[t]{14cm}{When you use the SenseHat you might get a warning saying that the TCS34725 colour sensor cannot be initialised. This is normal and due to that the version of the SenseHat you are using (version 1) does not have such a sensor. We will not use the colour sensor in the course so this is not a problem.}
+\noindent {\bf Note 1: }\parbox[t]{14cm}{When you use the Sense Hat you might get a warning saying that the TCS34725 colour sensor cannot be initialised. This is normal and due to that the version of the Sense Hat you are using (version 1) does not have such a sensor. We will not use the colour sensor in the course so this is not a problem. You can just ignore it.}
+
+\noindent {\bf Note 2: }\parbox[t]{14cm}{Some Raspberries have trouble recognising the Sense HAT and display an error message saying ''OSERROR: Cannot detect RPi-Sense FB device'' when you try to access it. If this happens do the following (you only need to do this once):\\1. Open a Terminal window and give the following command:\\\texttt{sudo nano /boot/firmware/config.txt}\\2. A text editor starts in the terminal window. Go to the end of the file and add the line:\\\texttt{dtoverlay=rpi\_sense}\\3. Save the file and exit by pressing \texttt{Ctrl+X} followed by \texttt{Y} and finally press ENTER.\\4. Reboot your Raspberry.}
 
 \section{Lab Goal}
-{\textcolor{red}{The task of this lab is to detect the joystick movement and show the corresponding arrow of the same direction on the LED display. Show the TAs your result when you finish the task. The joystick examples together with the last {\color{blue}{\href{https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat/10}{challenge}}} in the given instruction can help you on your way.}
+{\textcolor{red}{The task of this lab is to write a Python program that detects the joystick movement and shows a corresponding arrow of the same direction on the LED display. Show the TAs your result when you finish the task. The joystick examples together with the last {\color{blue}{\href{https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat/10}{challenge}}} in the given instruction can help you on your way.}
 
 %Please stop the tutorial when you have reached the \emph{Using the joystick} section.
 
@@ -265,9 +266,9 @@ The acronym HAT means \emph{Hardware Attached on Top} and is often used for Rasp
 % %how to interact with it
 
 
-\section{Helpful Hints}
-{\bf Hint 1: }\parbox[t]{14cm}{Open up a terminal using the command \texttt{Ctrl + Alt + T}}\\
-{\bf Hint 2: }\parbox[t]{14cm}{Using the joystick as a sensor and storing directions as \textit{North}, \textit{South}, \textit{East} or \textit{West} or something similar can be useful for the drone project.}\\
+%\section{Helpful Hints}
+%{\bf Hint 1: }\parbox[t]{14cm}{Open up a terminal using the command \texttt{Ctrl + Alt + T}}\\
+%{\bf Hint 2: }\parbox[t]{14cm}{Using the joystick as a sensor and storing directions as \textit{North}, \textit{South}, %\textit{East} or \textit{West} or something similar can be useful for the drone project.}\\
 \vspace{1cm}
 \begin{center}
 \huge Good luck!
@@ -276,7 +277,7 @@ The acronym HAT means \emph{Hardware Attached on Top} and is often used for Rasp
 \begin{thebibliography}{10}
 \bibliographystyle{plain}
 % \bibitem{iso-date-time} ISO 8601 -- Date and Time Format, \url{https://www.iso.org/iso-8601-date-and-time-format.html}, last accessed on 2021-09-21.
-\bibitem{foss} FOSSBYTES -- Which Sensors Do I Have In My Smartphone?, \url{https://fossbytes.com/which-smartphone-sensors-how-work/}, last accessed on 2021-09-21.
+\bibitem{foss} FOSSBYTES -- Which Sensors Do I Have In My Smartphone?, \url{https://fossbytes.com/which-smartphone-sensors-how-work/}, last accessed on 2025-10-30.
 % \bibitem{gpio} GPIO pins, \url{https://projects.raspberrypi.org/en/projects/physical-computing/1}, last accessed on 2021-09-21.
 \end{thebibliography}
 \end{document}
